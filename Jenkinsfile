@@ -15,6 +15,12 @@ pipeline {
             }
         }
 
+        stage('Approval') {
+            steps {
+                input message: 'Approve deployment?', ok: 'Deploy'
+            }
+        }
+
         stage('Run') {
             steps {
                 sh 'node app.js &'
